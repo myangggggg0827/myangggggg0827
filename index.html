@@ -3,43 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나의 첫 홈페이지</title>
+    <title>내 픽셀 블로그</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungyeolee/neodgm-webfont@latest/neodgm.css">
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5;
-            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            font-family: 'NeoDunggeunmo', sans-serif; /* 픽셀 폰트 적용 */
+            /* 배경화면 설정 (윈도우 XP 배경 주소) */
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/7/7d/Bliss.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-        .container {
-            text-align: center;
+
+        /* 대사창 스타일 */
+        .speech-bubble {
+            position: relative;
             background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 4px solid black;
+            border-radius: 10px;
+            padding: 20px 40px;
+            margin-bottom: 20px; /* 캐릭터와 간격 */
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+            max-width: 80%;
+            text-align: center;
+            cursor: pointer; /* 마우스 올리면 손가락 모양 */
+            transition: transform 0.1s;
         }
-        h1 { color: #333; }
-        p { color: #666; }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
+
+        .speech-bubble:active {
+            transform: translateY(3px); /* 클릭하면 눌리는 효과 */
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
         }
+
+        .speech-bubble h2 {
+            margin: 0;
+            font-size: 24px;
+            line-height: 1.5;
+        }
+
+        /* 말풍선 꼬리 (아래로 뾰족한 부분) */
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 15px 15px 0;
+            border-style: solid;
+            border-color: black transparent;
+            display: block;
+            width: 0;
+        }
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -9px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 12px 12px 0;
+            border-style: solid;
+            border-color: white transparent;
+            display: block;
+            width: 0;
+            z-index: 1;
+        }
+
+        /* 캐릭터 이미지 스타일 */
+        .character {
+            width: 150px; /* 캐릭터 크기 조절 */
+            image-rendering: pixelated; /* 픽셀 깨지지 않게 선명하게 */
+        }
+        
+        /* 링크 스타일 제거 */
+        a { text-decoration: none; color: black; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>환영합니다! 🎉</h1>
-        <p>깃허브로 만든 저의 첫 번째 웹사이트입니다.</p>
-        <p>앞으로 멋진 포트폴리오로 채워질 예정입니다.</p>
-        <a href="#" class="btn">자세히 보기</a>
-    </div>
+
+    <a href="https://github.com/myanggggg0827" target="_blank">
+        <div class="speech-bubble">
+            <h2>뭐하려고 했었지 ... ?<br>▼ (클릭해서 입장)</h2>
+        </div>
+    </a>
+
+    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDM1OXZ6YjZ5Z3Z6YjZ5Z3Z6YjZ5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7TKTn6r55f7rQ9Og/giphy.gif" class="character" alt="픽셀 캐릭터">
+
 </body>
 </html>
