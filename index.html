@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>내 픽셀 블로그</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungyeolee/neodgm-webfont@latest/neodgm.css">
     <style>
+        /* 1. 둥근모(픽셀) 폰트 확실하게 불러오기 */
+        @import url('https://cdn.jsdelivr.net/gh/ungyeolee/neodgm-webfont@latest/neodgm.css');
+
         body {
             margin: 0;
             padding: 0;
@@ -14,9 +16,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: 'NeoDunggeunmo', sans-serif; /* 픽셀 폰트 적용 */
-            /* 배경화면 설정 (윈도우 XP 배경 주소) */
-            background-image: url('https://upload.wikimedia.org/wikipedia/en/7/7d/Bliss.png');
+            /* 폰트 적용 (없으면 돋움체로) */
+            font-family: 'NeoDunggeunmo', 'Dotum', sans-serif;
+            
+            /* 2. 윈도우 XP 배경화면 (위키미디어 안정적인 주소) */
+            background-image: url('https://upload.wikimedia.org/wikipedia/ko/2/2d/%EC%B1%84%EC%9B%80_%28Windows_XP%29.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -25,75 +29,82 @@
         /* 대사창 스타일 */
         .speech-bubble {
             position: relative;
-            background: white;
-            border: 4px solid black;
-            border-radius: 10px;
-            padding: 20px 40px;
-            margin-bottom: 20px; /* 캐릭터와 간격 */
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
-            max-width: 80%;
+            background: #fff;
+            border: 4px solid #000;
+            padding: 20px 30px;
+            margin-bottom: 20px;
             text-align: center;
-            cursor: pointer; /* 마우스 올리면 손가락 모양 */
-            transition: transform 0.1s;
+            /* 그림자도 픽셀처럼 딱딱하게 */
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.3); 
+            cursor: pointer;
+            max-width: 80%;
+            z-index: 10; /* 캐릭터보다 앞에 오게 */
         }
 
         .speech-bubble:active {
-            transform: translateY(3px); /* 클릭하면 눌리는 효과 */
-            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            transform: translate(4px, 4px);
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
         }
 
         .speech-bubble h2 {
             margin: 0;
-            font-size: 24px;
-            line-height: 1.5;
+            font-size: 22px; /* 글자 크기 */
+            line-height: 1.6;
+            color: #000;
+        }
+        
+        .speech-bubble p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: #555;
         }
 
-        /* 말풍선 꼬리 (아래로 뾰족한 부분) */
+        /* 말풍선 꼬리 */
         .speech-bubble::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -14px;
             left: 50%;
             transform: translateX(-50%);
-            border-width: 15px 15px 0;
+            border-width: 14px 14px 0;
             border-style: solid;
-            border-color: black transparent;
+            border-color: #000 transparent;
             display: block;
             width: 0;
         }
         .speech-bubble::before {
             content: '';
             position: absolute;
-            bottom: -9px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            border-width: 12px 12px 0;
+            border-width: 11px 11px 0;
             border-style: solid;
-            border-color: white transparent;
+            border-color: #fff transparent;
             display: block;
             width: 0;
             z-index: 1;
         }
 
-        /* 캐릭터 이미지 스타일 */
+        /* 3. 캐릭터 이미지 (움직이는 픽셀 햄스터) */
         .character {
-            width: 150px; /* 캐릭터 크기 조절 */
-            image-rendering: pixelated; /* 픽셀 깨지지 않게 선명하게 */
+            width: 180px;
+            image-rendering: pixelated; /* 도트 깨끗하게 */
         }
         
-        /* 링크 스타일 제거 */
-        a { text-decoration: none; color: black; }
+        a { text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <a href="https://github.com/myanggggg0827" target="_blank">
+    <a href="#">
         <div class="speech-bubble">
-            <h2>뭐하려고 했었지 ... ?<br>▼ (클릭해서 입장)</h2>
+            <h2>뭐하려고 했었지 ... ?</h2>
+            <p>▼ (Click!)</p>
         </div>
     </a>
 
-    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDM1OXZ6YjZ5Z3Z6YjZ5Z3Z6YjZ5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7TKTn6r55f7rQ9Og/giphy.gif" class="character" alt="픽셀 캐릭터">
+    <img src="https://media.tenor.com/tuwclF5t144AAAAi/hamster-hamtaro.gif" class="character" alt="픽셀 햄스터">
 
 </body>
 </html>
